@@ -1,0 +1,3 @@
+---
+letsencrypt_email: "user@domain.com"
+letsencrypt_domain: "yourdomain.com"

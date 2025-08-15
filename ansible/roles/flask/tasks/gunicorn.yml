@@ -1,0 +1,15 @@
+---
+- name: Copy gunicorn systemd service
+  become: true
+  template: src=gunicorn.service dest=/etc/systemd/system/gunicorn.service owner=root group=root mode=0644
+  
+- name: Reload system
+  become: true
+  command: systemctl daemon-reload
+
+- name: Enable and start gunicorn
+  become: true
+  systemd:
+    name: gunicorn
+    enabled: true
+    state: started

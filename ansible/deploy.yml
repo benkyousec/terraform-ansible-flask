@@ -1,0 +1,11 @@
+---
+- name: Install nginx, gunicorn, Flask
+  hosts: all
+  # remote_user: root
+  remote_user: YOUR USERNAME HERE
+
+  roles:
+    - common
+    - nginx
+    - flask
+    - certbot

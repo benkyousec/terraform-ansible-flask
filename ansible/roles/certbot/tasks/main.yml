@@ -1,0 +1,23 @@
+---
+- name: Install certbot
+  become: true
+  snap:
+    name: certbot
+    classic: true
+
+- name: Prepare the certbot command
+  become: true
+  file:
+    src: /snap/bin/certbot
+    dest: /usr/bin/certbot
+    state: link
+
+- name: Request certificate
+  become: true
+  command: >
+    certbot --nginx
+    --non-interactive
+    --agree-tos
+    --no-eff-email
+    --email {{ letsencrypt_email }}
+    -d {{ letsencrypt_domain }}

@@ -1,0 +1,16 @@
+---
+- name: Create working directory
+  become: true
+  file: path=/app state=directory owner={{ ansible_user }} group={{ ansible_user }} mode=0755
+
+- name: Copy basic Flask app
+  become: true
+  template: src=app.py dest=/app/app.py owner={{ ansible_user }} group={{ ansible_user }} mode=0644
+
+- name: Create virtual environment and install packages
+  pip:
+    virtualenv: /app/.venv
+    virtualenv_command: python3 -m venv
+    name:
+      - flask
+      - gunicorn
