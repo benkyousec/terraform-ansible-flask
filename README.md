@@ -51,8 +51,8 @@ Update username in `ansible/deploy.yml` with your GCP VM username:
 
 Set your certificate email and domain in `ansible/roles/certbot/defaults/main.yml`.
 
-> ![IMPORTANT]
-> Make sure that you have an A record that points your domain to the VM's IP address.
+> [!IMPORTANT]  
+> Make sure that you have a DNS A record that points your domain to the VM's IP address.
 
 ```
 letsencrypt_email: "user@domain.com"
